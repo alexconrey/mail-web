@@ -14,6 +14,9 @@ class Mailbox(models.Model):
 
         def __unicode__(self):
                 return self.name + '@' + self.domain.name
+	class Meta:
+		verbose_name = 'Mailbox'
+		verbose_name_plural = 'Mailboxes'
 
 
 class Alias(models.Model):
@@ -23,4 +26,8 @@ class Alias(models.Model):
 
         def __unicode__(self):
                 return self.name + '@' + self.domain.name
+	
+	class Meta:
+		verbose_name = 'Alias'
+		verbose_name_plural = 'Aliases'
 

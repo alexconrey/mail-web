@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, RedirectView
 
 from models import Domain, ForwardDomain
-from forms import CreateDomainForm
+from forms import CreateDomainForm, CreateForwardDomainForm
 
 def ListAllDomains(request):
 	local_domain_list = Domain.objects.all().values()
@@ -38,7 +38,7 @@ def ListForwardDomains(request):
 
 	return render(request, 'domains/table.html', context)
 
-def CreateDomain(request):
+def CreateLocalDomain(request):
 	if request.method == "POST":
 		form = CreateDomainForm(request.POST)
 		if form.is_valid():
@@ -46,5 +46,16 @@ def CreateDomain(request):
 			return ListAllDomains(request)
 	else:
 		form = CreateDomainForm()
+
+	return render(request, 'domains/create_domain.html', {'form': form})
+
+def CreateForwardDomain(request):
+	if request.method == "POST":
+		form = CreateForwardDomainForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return ListAllDomains(request)
+	else:
+		form = CreateForwardDomainForm()
 
 	return render(request, 'domains/create_domain.html', {'form': form})

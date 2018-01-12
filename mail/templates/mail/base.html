@@ -1,0 +1,24 @@
+<html>
+<head>
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block head_content %}
+{% endblock %}
+</head>
+<body>
+  <div class="container">
+    {% include 'mail/nav.html' %}
+    {% if messages %}
+    {% bootstrap_messages %}
+    {% endif %}
+    {% block body_content %}
+    {% endblock %}
+  </div>
+</body>
+<footer class='footer'>
+  {% block footer_content %}
+  {% endblock %}
+</footer>
+</html>

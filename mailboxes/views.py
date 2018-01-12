@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 
 from models import Mailbox, Alias
-from forms import CreateMailboxForm
+from forms import CreateMailboxForm, CreateAliasForm
 
 from domains.models import Domain
 
@@ -39,7 +39,8 @@ def CreateAlias(request):
 		form = CreateAliasForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return ListMailboxesForDomain(request)
+			dname = Domain.objects.get(pk=request.POST['domain']).name
+			return redirect(ListMailboxesForDomain, domain_name=dname)
 	else:
 		form = CreateAliasForm()
 

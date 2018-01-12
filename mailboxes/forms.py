@@ -9,3 +9,7 @@ class CreateMailboxForm(ModelForm):
 		model = Mailbox
 		fields = ['name', 'password', 'quota', 'is_active', 'is_readonly', 'domain']
 
+class CreateAliasForm(ModelForm):
+	class Meta:
+		model = Alias
+		fields = ['name', 'domain', 'to_mailbox']

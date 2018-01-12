@@ -2,11 +2,9 @@
 
 {% block body_content %}
 {% if domain_list %}
-<br />
-<br />
 <table class="table-striped table-condensed">
   <tr>
-    <h3>Domains</h3>
+    <h3>{{ title }}</h3>
   </tr>
   <tr>
     <th>Name</th>
@@ -23,9 +21,5 @@
 </table>
 {% endif %}
 
-
-{% for domain in domain_list %}
-{{ domain.name }} 
-{% endfor %}
 
 {% endblock %}

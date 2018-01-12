@@ -1,0 +1,10 @@
+{% extends 'mail/base.html' %}
+
+{% block body_content %}
+
+<form action="#" method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Create Domain" />
+</form>
+{% endblock %}

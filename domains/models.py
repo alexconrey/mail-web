@@ -7,7 +7,7 @@ from django.db import models
 
 class Domain(models.Model):
 	name = models.CharField(max_length=255)
-	date_created = models.DateTimeField(auto_now=True)
+	date_created = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)
 	
 	def __unicode__(self):
@@ -15,7 +15,7 @@ class Domain(models.Model):
 
 class ForwardDomain(models.Model):
 	name = models.CharField(max_length=255)
-	date_created = models.DateTimeField(auto_now=True)
+	date_created = models.DateTimeField(auto_now_add=True)
 	date_modified = models.DateTimeField(auto_now=True)
 	to_domain = models.ForeignKey(Domain, on_delete=models.CASCADE)
 

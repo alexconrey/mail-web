@@ -1,10 +1,11 @@
 {% extends 'mail/base.html' %}
 
 {% block body_content %}
-
+{% if user.is_authenticated %}
 <form action="#" method="post">
 	{% csrf_token %}
 	{{ form }}
 	<input type="submit" value="Create Domain" />
 </form>
+{% endif %}
 {% endblock %}

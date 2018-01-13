@@ -27,8 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-from mail_dbinfo import DATABASES
+ALT_DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	}
+}
 
+try:
+	from mail_dbinfo import DATABASES
+except ImportError:
+	DATABASES = ALT_DATABASES
 # Application definition
 
 INSTALLED_APPS = [

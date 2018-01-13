@@ -4,13 +4,19 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 from django.views.generic import TemplateView, RedirectView
+from django.contrib.auth.models import User
+
 
 from models import Domain, ForwardDomain
 from forms import CreateDomainForm, CreateForwardDomainForm
 
 def ListAllDomains(request):
-	local_domain_list = Domain.objects.all().values()
-	forward_domain_list = ForwardDomain.objects.all().values()
+	if request.user.is_superuser:
+		local_domain_list = Domain.objects.all().values()
+		forward_domain_list = ForwardDomain.objects.all().values()
+	else:
+		local_domain_list = Domain.objects.filter(owner=request.user).values()
+		forward_domain_list = ForwardDomain.objects.filter(owner=request.user).values()
 
 	all_domain_list = [] 
 

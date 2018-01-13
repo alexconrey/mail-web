@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'domains',
     'mailboxes',
+    'user_management',
     'bootstrap3',
 ]
 

@@ -17,8 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
+from user_management import views as user_management
 
 urlpatterns = [
+    url(r'^$', user_management.Welcome, name='welcome'),
     url(r'^admin/', admin.site.urls),
     url(r'^domains/', include('domains.urls')),
     url(r'^mailboxes/', include('mailboxes.urls')),

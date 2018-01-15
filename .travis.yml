@@ -12,9 +12,11 @@ env:
 
 install:
   - pip install -r ./requirements.txt 
-  - python2 manage.py migrate
-  - python2 manage.py runserver 2>&1
+  - python manage.py migrate
+
 
 script:
+  - django-lint
   - python manage.py test
-  - curl http://localhost:8000/
+  - python manage.py createsuperuser --noinput --username testadmin --email test@user.com
+  - python manage.py sendtestemail --admin

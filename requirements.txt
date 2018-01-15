@@ -1,4 +1,5 @@
-django==1.11
 mysqlclient
+django==1.11
 gunicorn
 django-bootstrap3
+django-lint

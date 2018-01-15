@@ -10,7 +10,7 @@ from domains.models import Domain, ForwardDomain
 # Create your tests here.
 
 class DomainTest(TestCase):
-    def setUp(selt):
+    def setUp(self):
             User.objects.create_user('test', 'test@user.com', 'test123')
             Domain.objects.create(name='test.com',owner_id='1')
             ForwardDomain.objects.create(name='forwardtest.com', owner_id='1', to_domain_id='1')

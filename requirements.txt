@@ -3,3 +3,5 @@ django==1.11
 gunicorn
 django-bootstrap3
 django-lint
+coverage
+django-nose

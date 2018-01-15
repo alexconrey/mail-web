@@ -1,17 +1,16 @@
 language: python
-#dist: centos
+sudo: required
 env:
   matrix:
-    - OS_TYPE=centos OS_VERSION=6
-    - OS_TYPE=centos OS_VERSION=7
-    - OS_TYPE=debian OS_VERSION=9
-    - OS_TYPE=debian OS_VERSION=8
-    - OS_TYPE=debian OS_VERSION=7
-cache: packages
-before_install:
-  - pip install -r ./requirements.txt 
+    - os: linux
+      sudo: required
+      python: 2.7
+    - os: osx
+      language: generic
+      env: TOXENV=py27
 
 install:
+  - pip install -r ./requirements.txt 
   - python2 manage.py migrate
 
 script:

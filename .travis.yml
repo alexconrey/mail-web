@@ -3,6 +3,7 @@ sudo: required
 env:
   matrix:
     - os: linux
+      dist: trusty
       sudo: required
       python: 2.7
     - os: osx
@@ -12,6 +13,8 @@ env:
 install:
   - pip install -r ./requirements.txt 
   - python2 manage.py migrate
+  - python2 manage.py runserver 2>&1
 
 script:
   - python manage.py test
+  - curl http://localhost:8000/

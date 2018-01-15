@@ -10,3 +10,6 @@ before_install:
 
 install:
   - python2 manage.py migrate
+
+script:
+  - python manage.py test

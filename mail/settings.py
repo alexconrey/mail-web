@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'mailboxes',
     'user_management',
     'bootstrap3',
+    'django_nose',
 ]
 
 MIDDLEWARE = [
@@ -140,4 +141,11 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, "static"),
+]
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+        '--with-coverage',
+        '--cover-package=domains,mailboxes,user_management',
 ]

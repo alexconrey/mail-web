@@ -16,7 +16,7 @@ install:
 
 
 script:
-  - django-lint
+        #  - django-lint
   - python manage.py test
   - python manage.py createsuperuser --noinput --username testadmin --email test@user.com
   - python manage.py sendtestemail --admin

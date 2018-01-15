@@ -1,7 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{{ title }}</title>
+
 {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.css ' %}">
 
 {% load bootstrap3 %}
 {% bootstrap_css %}
@@ -11,17 +21,15 @@
 {% endblock %}
 </head>
 <body>
-  <div class="container">
-    {% include 'mail/nav.html' %}
-    {% if messages %}
-    {% bootstrap_messages %}
-    {% endif %}
-    {% block body_content %}
-    {% endblock %}
-  </div>
-</body>
-<footer class='footer'>
-  {% block footer_content %}
+  {% include 'mail/nav.html' %}
+  {% if messages %}
+  {% bootstrap_messages %}
+  {% endif %}
+  {% block body_content %}
   {% endblock %}
-</footer>
+  {% include 'mail/footer.html' %}
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+{% bootstrap_javascript %}
+
+</body>
 </html>

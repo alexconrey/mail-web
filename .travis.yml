@@ -1,2 +1,12 @@
-install:
+language: python
+dist: centos
+env:
+  matrix:
+    - OS_TYPE=centos OS_VERSION=6
+    - OS_TYPE=centos OS_VERSION=7
+cache: packages
+before_install:
   - pip install -r ./requirements.txt --user
+
+install:
+  - python2 manage.py migrate

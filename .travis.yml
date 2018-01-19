@@ -2,21 +2,20 @@ language: python
 sudo: required
 env:
   matrix:
-    - os: linux
-      dist: trusty
-      sudo: required
-      python: 2.7
-    - os: osx
-      language: generic
-      env: TOXENV=py27
-
+  - os: linux
+    dist: trusty
+    sudo: required
+    python: 2.7
+  - os: osx
+    language: generic
+    env: TOXENV=py27
+notifications:
+  slack:
+    secure: B38qq8G/Q+v6LkbKXbTK2ry8HmdqwlPvQXi4JpF94ffOoaerAqsyU+8kbg0Kslj/BaABzwwfemBdX5hfq6FLTK6bquIJelT6LEFkRkQnpISiUoIKCjsh84s4aQpiN+78+5AHIg7uZ4Tfr38iT7ON439TgS4pdL+bTrWzim1Q0QPLOmxuVf5sgndxviFPhw5tRHiHHlSAqFXIi6y9k+a40BsPv9qoNKrTNLhgJK9dlshbdC+kszZV36rYRh+7r0hhm0ChJd6WEz1dMl7Y7qhmBc6npoWtSnIKKVIrb01SCE1iV7mdiVKZDK6FGeiAKG+0b0AL1JaIHykgBSYTjM8g3f9rNrml40CEkKNtL7hB4gNEGQjWppOoZM9J9EQWwhfGShkJBS1WxSk3FVXi/5mJXIGtvM2QCFli2fPkctrkKw+s83LPd6gP3AokQq8I/9vm22VHO6GMl1VzH1szgVgsPBq8BPs07SsA3m26kjijxsouMwTq1zH/shR59gP3mRhA6ukDrcMpP1/edztVkvRzI+K2Bfz4CJjviOE/jEOlUXSHepOZB29mtRPFcGT+NR7JuZTewhpxpA5+/E+lcsWNDjEdWM02WMauriqpOEjdi0dmSSgnzsCF77q6JszwKi8+vS1sucCwaWCCOmpc8QXCiPJbVduYRa6VMjvzJ25h0GE=
 install:
-  - pip install -r ./requirements.txt 
-  - python manage.py migrate
-
-
+- pip install -r ./requirements.txt
+- python manage.py migrate
 script:
-        #  - django-lint
-  - python manage.py test
-  - python manage.py createsuperuser --noinput --username testadmin --email test@user.com
-  - python manage.py sendtestemail --admin
+- python manage.py test
+- python manage.py createsuperuser --noinput --username testadmin --email test@user.com
+- python manage.py sendtestemail --admin
